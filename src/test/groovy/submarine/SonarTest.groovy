@@ -1,3 +1,5 @@
+package submarine
+
 import spock.lang.Specification
 import submarine.Sonar
 

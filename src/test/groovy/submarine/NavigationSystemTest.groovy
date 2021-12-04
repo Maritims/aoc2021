@@ -1,10 +1,12 @@
-import spock.lang.Specification
-import submarine.AdvancedNavigationSystem
+package submarine
 
-class AdvancedNavigationSystemTest extends Specification {
+import spock.lang.Specification
+import submarine.NavigationSystem
+
+class NavigationSystemTest extends Specification {
     def "Move around"() {
         given:
-        def sut = new AdvancedNavigationSystem()
+        def sut = new NavigationSystem()
 
         when:
         sut.forward(5)
@@ -16,6 +18,6 @@ class AdvancedNavigationSystemTest extends Specification {
 
         then:
         assert sut.x == 15
-        assert sut.depth == 60
+        assert sut.depth == 10
     }
 }

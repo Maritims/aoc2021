@@ -1,13 +1,10 @@
 package submarine
 
 class Submarine {
-    final Sonar sonar
-    final NavigationSystem navigationSystem
-
-    Submarine(NavigationSystem navigationSystem, Sonar sonar) {
-        this.navigationSystem = navigationSystem
-        this.sonar = sonar
-    }
+    Sonar sonar
+    NavigationSystem navigationSystem
+    Battery battery
+    LifeSupport lifeSupport
 
     Submarine executeCourse(List<String> instructions) {
         instructions.each {

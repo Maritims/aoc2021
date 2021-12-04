@@ -11,7 +11,7 @@ class DayTwo implements Puzzle {
     }
 
     int solvePartOne() {
-        def submarine = new Submarine(new NavigationSystem(), null)
+        def submarine = new Submarine(navigationSystem: new NavigationSystem())
         def instructions = DayTwo.class.classLoader.getResourceAsStream('day2.txt').readLines()
         submarine.executeCourse(instructions)
 
@@ -19,7 +19,7 @@ class DayTwo implements Puzzle {
     }
 
     int solvePartTwo() {
-        def submarine = new Submarine(new AdvancedNavigationSystem(), null)
+        def submarine = new Submarine(navigationSystem: new AdvancedNavigationSystem())
         def instructions = DayTwo.class.classLoader.getResourceAsStream('day2.txt').readLines()
         submarine.executeCourse(instructions)
 

@@ -19,7 +19,7 @@ class DayOne implements Puzzle {
      */
     int solvePartOne() {
         def readings = DayOne.class.classLoader.getResourceAsStream('day1.txt').readLines().collect { Integer.parseInt(it) }
-        new Submarine(null, new Sonar(readings)).sonar.read()
+        new Submarine(sonar: new Sonar(readings)).sonar.read()
     }
 
     /**
@@ -28,7 +28,7 @@ class DayOne implements Puzzle {
      */
     int solvePartTwo() {
         def readings = DayOne.class.classLoader.getResourceAsStream('day1.txt').readLines().collect { Integer.parseInt(it) }
-        def submarine = new Submarine(null, new Sonar(readings))
+        def submarine = new Submarine(sonar: new Sonar(readings))
         submarine.sonar.read(submarine.sonar.readAsWindows())
     }
 }

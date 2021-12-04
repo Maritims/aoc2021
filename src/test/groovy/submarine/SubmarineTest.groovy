@@ -1,3 +1,5 @@
+package submarine
+
 import spock.lang.Specification
 import submarine.NavigationSystem
 import submarine.Submarine
@@ -5,7 +7,7 @@ import submarine.Submarine
 class SubmarineTest extends Specification {
     def "ExecuteCourse"() {
         given:
-        def sut = new Submarine(new NavigationSystem(), null)
+        def sut = new Submarine(navigationSystem: new NavigationSystem())
         def instructions = [
                 "forward 5",
                 "down 5",
