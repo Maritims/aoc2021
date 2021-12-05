@@ -1,14 +1,17 @@
-package submarine.bingo
+package bingo
 
 class Square {
     Integer number
-    boolean checked
+    Date checkedAt
+    boolean isChecked() {
+        checkedAt
+    }
 
     Square(Integer number) {
         this.number = number
     }
 
     String toString() {
-        "${number}: ${checked}"
+        "${number}: ${isChecked()}"
     }
 }

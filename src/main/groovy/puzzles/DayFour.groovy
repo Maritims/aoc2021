@@ -1,33 +1,42 @@
 package puzzles
 
-import submarine.bingo.Bingo
-import submarine.bingo.Board
-import submarine.bingo.Row
+import bingo.Bingo
+import bingo.Board
+import bingo.Row
 
 class DayFour implements Puzzle {
     @Override
     Map<String, Object> solve() {
-        [partOne: solvePartOne()]
+        [partOne: solvePartOne(), partTwo: solvePartTwo()]
     }
 
-    Integer solvePartOne() {
+    static Bingo setUpGame() {
         def bingoData = DayFour.class.classLoader.getResourceAsStream('day4.txt').readLines()
         def numbers = bingoData.pop()
                 .split(',')
-                .collect {Integer.parseInt(it) }
+                .collect { Integer.parseInt(it) }
         def boards = new ArrayList<Board>()
 
         bingoData = bingoData.findAll { it }
         def iterator = bingoData.iterator()
 
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             def lines = (1..5).collect { iterator.next() }
             boards.add(new Board(Row.fromDelimitedStrings(lines)))
         }
 
-        def bingo = new Bingo(boards, numbers)
+        new Bingo(boards, numbers)
+    }
+
+    Integer solvePartOne() {
+        Bingo bingo = setUpGame()
         def winningScore = bingo.play()
-        def winningBoard = bingo.boards.find { it.isWon() }
         winningScore
+    }
+
+    Integer solvePartTwo() {
+        Bingo bingo = setUpGame()
+        bingo.play(false)
+        bingo.boards.sort { a, b -> a.wonAt <=> b.wonAt }.last().winningScore
     }
 }

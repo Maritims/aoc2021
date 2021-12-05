@@ -1,4 +1,4 @@
-package submarine.bingo
+package bingo
 
 import java.util.regex.Pattern
 

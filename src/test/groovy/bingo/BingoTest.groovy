@@ -1,10 +1,12 @@
-package submarine.bingo
+package bingo
 
+import bingo.Bingo
+import bingo.Board
 import spock.lang.Specification
 
 class BingoTest extends Specification {
     static def numbers = [7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1]
-    def boards = [
+    static def boards = [
             new Board([[22, 13, 17, 11, 0],
                        [8, 2, 23, 4, 24],
                        [21, 9, 14, 16, 7],
@@ -33,8 +35,21 @@ class BingoTest extends Specification {
 
         then:
         sut.isWon()
-        sut.summarizeUnmarkedNumbers() == 188
+        sut.boards.find { it.isWon() }.summarizeUnmarkedNumbers() == 188
         sut.getWinningScore() == 4512
+    }
+
+    def "Lose the game"() {
+        given:
+        Bingo bingo = new Bingo(new ArrayList<>(boards), new ArrayList<>(numbers))
+
+        when:
+        bingo.play(false)
+        def lastWinningBoard = bingo.boards.sort { a, b -> a.wonAt <=> b.wonAt }.last()
+
+        then:
+        lastWinningBoard.winningNumber == 13
+        lastWinningBoard.winningScore == 1924
     }
 
     def "Win by column"() {

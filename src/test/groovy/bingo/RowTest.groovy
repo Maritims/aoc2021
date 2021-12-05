@@ -1,5 +1,6 @@
-package submarine.bingo
+package bingo
 
+import bingo.Row
 import spock.lang.Specification
 
 class RowTest extends Specification {
