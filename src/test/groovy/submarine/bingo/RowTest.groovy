@@ -11,34 +11,34 @@ class RowTest extends Specification {
         def rows = Row.fromDelimitedStrings(lines)
 
         then:
-        rows[0].squares[0].number == 78
-        rows[0].squares[1].number == 27
-        rows[0].squares[2].number == 82
-        rows[0].squares[3].number == 68
-        rows[0].squares[4].number == 20
+        rows[0][0] == 78
+        rows[0][1] == 27
+        rows[0][2] == 82
+        rows[0][3] == 68
+        rows[0][4] == 20
 
-        rows[1].squares[0].number == 14
-        rows[1].squares[1].number == 2
-        rows[1].squares[2].number == 34
-        rows[1].squares[3].number == 51
-        rows[1].squares[4].number == 7
+        rows[1][0] == 14
+        rows[1][1] == 2
+        rows[1][2] == 34
+        rows[1][3] == 51
+        rows[1][4] == 7
 
-        rows[2].squares[0].number == 58
-        rows[2].squares[1].number == 57
-        rows[2].squares[2].number == 99
-        rows[2].squares[3].number == 37
-        rows[2].squares[4].number == 81
+        rows[2][0] == 58
+        rows[2][1] == 57
+        rows[2][2] == 99
+        rows[2][3] == 37
+        rows[2][4] == 81
 
-        rows[3].squares[0].number == 9
-        rows[3].squares[1].number == 4
-        rows[3].squares[2].number == 0
-        rows[3].squares[3].number == 76
-        rows[3].squares[4].number == 45
+        rows[3][0] == 9
+        rows[3][1] == 4
+        rows[3][2] == 0
+        rows[3][3] == 76
+        rows[3][4] == 45
 
-        rows[4].squares[0].number == 67
-        rows[4].squares[1].number == 69
-        rows[4].squares[2].number == 70
-        rows[4].squares[3].number == 17
-        rows[4].squares[4].number == 23
+        rows[4][0] == 67
+        rows[4][1] == 69
+        rows[4][2] == 70
+        rows[4][3] == 17
+        rows[4][4] == 23
     }
 }

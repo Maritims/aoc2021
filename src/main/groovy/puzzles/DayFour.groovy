@@ -22,6 +22,6 @@ class DayFour implements Puzzle {
             iterator.next()
         }
 
-        new Bingo(boards)
+        def bingo = new Bingo(boards)
     }
 }

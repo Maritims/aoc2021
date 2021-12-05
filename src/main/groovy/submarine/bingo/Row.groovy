@@ -15,7 +15,7 @@ class Row {
         squares.join(', ')
     }
 
-    static List<Row> fromDelimitedStrings(List<String> lines) {
+    static List<List<Integer>> fromDelimitedStrings(List<String> lines) {
         def p = Pattern.compile("(\\d+)")
         lines.collect {line ->
             def m = p.matcher(line)
@@ -23,7 +23,7 @@ class Row {
             while(m.find()) {
                 numbers.add(parseInt(m.group()))
             }
-            new Row(numbers)
+            numbers
         }
     }
 }
