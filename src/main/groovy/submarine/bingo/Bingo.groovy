@@ -2,17 +2,26 @@ package submarine.bingo
 
 class Bingo {
     List<Board> boards
+    List<Integer> numbers
+    Integer winningNumber
 
-    Bingo(List<Board> boards) {
+    Bingo(List<Board> boards, List<Integer> numbers) {
         this.boards = boards
+        this.numbers = numbers
     }
 
     void drawNumber() {
-        boards.each { it.drawNumber() }
+        def number = numbers.pop()
+        boards.each { board ->
+            board.rows.each {row ->
+                row.squares.findAll { square -> square.number == number }.each {square -> square.checked = true }
+            }
+        }
+        if(isWon()) winningNumber = number
     }
 
     boolean isWon() {
-        boards.any { it.isWon() }
+        boards.any {it.isWon() }
     }
 
     Integer summarizeUnmarkedNumbers() {
@@ -24,11 +33,15 @@ class Bingo {
         sum
     }
 
-    Integer getWinningNumber() {
-        boards.find { it.isWon() }.winningNumber
+    Integer getWinningScore() {
+        def sum = summarizeUnmarkedNumbers()
+        sum * winningNumber
     }
 
-    Integer getWinningScore() {
-        summarizeUnmarkedNumbers() * getWinningNumber()
+    Integer play() {
+        while(!isWon()) {
+            drawNumber()
+        }
+        winningScore
     }
 }
