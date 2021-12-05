@@ -1,4 +1,4 @@
-package submarine
+package submarine.subsystems
 
 class AdvancedNavigationSystem extends NavigationSystem {
     def aim = 0

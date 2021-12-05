@@ -1,10 +1,13 @@
 package submarine
 
+import submarine.subsystems.*
+
 class Submarine {
     Sonar sonar
     NavigationSystem navigationSystem
     Battery battery
     LifeSupport lifeSupport
+    HydrothermalSensor hydrothermalSensor
 
     Submarine executeCourse(List<String> instructions) {
         instructions.each {

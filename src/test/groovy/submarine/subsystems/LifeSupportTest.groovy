@@ -1,41 +1,42 @@
-package submarine
+package submarine.subsystems
 
 import spock.lang.Specification
+import submarine.subsystems.LifeSupport
 
-class BatteryTest extends Specification {
-    def "GetGammaRate"() {
+class LifeSupportTest extends Specification {
+    def "GetOxygenRate"() {
         given:
-        def sut = new Battery(5)
+        def sut = new LifeSupport(5)
         def binaryNumbers = ['00100', '11110', '10110', '10111', '10101', '01111', '00111', '11100', '10000', '11001', '00010', '01010']
 
         when:
-        def gammaRate = sut.getGammaRate(binaryNumbers)
+        def oxygenRate = sut.getOxygenRate(binaryNumbers)
 
         then:
-        gammaRate == 22
+        oxygenRate == 23
     }
 
-    def "GetEpsilonRate"() {
+    def "GetCO2Rate"() {
         given:
-        def sut = new Battery(5)
+        def sut = new LifeSupport(5)
         def binaryNumbers = ['00100', '11110', '10110', '10111', '10101', '01111', '00111', '11100', '10000', '11001', '00010', '01010']
 
         when:
-        def epsilonRate = sut.getEpsilonRate(binaryNumbers)
+        def co2Rate = sut.getCO2Rate(binaryNumbers)
 
         then:
-        epsilonRate == 9
+        co2Rate == 10
     }
 
-    def "GetPowerConsumption"() {
+    def "GetLifeSupportRating"() {
         given:
-        def sut = new Battery(5)
+        def sut = new LifeSupport(5)
         def binaryNumbers = ['00100', '11110', '10110', '10111', '10101', '01111', '00111', '11100', '10000', '11001', '00010', '01010']
 
         when:
-        def powerConsumption = sut.getPowerConsumption(binaryNumbers)
+        def lifeSupportRate = sut.getLifeSupportRating(binaryNumbers)
 
         then:
-        powerConsumption == 198
+        lifeSupportRate == 230
     }
 }

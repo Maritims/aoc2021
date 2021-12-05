@@ -1,10 +1,17 @@
 package puzzles
 
-import submarine.AdvancedNavigationSystem
-import submarine.NavigationSystem
 import submarine.Submarine
+import submarine.subsystems.AdvancedNavigationSystem
+import submarine.subsystems.NavigationSystem
 
-class DayTwo implements Puzzle {
+import static helpers.FileHelper.getData
+
+class Day2 implements Puzzle {
+
+    @Override
+    int getDay() {
+        2
+    }
 
     Map<String, Object> solve() {
         [partOne: solvePartOne(), partTwo: solvePartTwo()]
@@ -12,7 +19,7 @@ class DayTwo implements Puzzle {
 
     int solvePartOne() {
         def submarine = new Submarine(navigationSystem: new NavigationSystem())
-        def instructions = DayTwo.class.classLoader.getResourceAsStream('day2.txt').readLines()
+        def instructions = getData(day)
         submarine.executeCourse(instructions)
 
         submarine.navigationSystem.x * submarine.navigationSystem.depth
@@ -20,7 +27,7 @@ class DayTwo implements Puzzle {
 
     int solvePartTwo() {
         def submarine = new Submarine(navigationSystem: new AdvancedNavigationSystem())
-        def instructions = DayTwo.class.classLoader.getResourceAsStream('day2.txt').readLines()
+        def instructions = getData(day)
         submarine.executeCourse(instructions)
 
         submarine.navigationSystem.x * submarine.navigationSystem.depth

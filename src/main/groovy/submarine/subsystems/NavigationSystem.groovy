@@ -1,4 +1,4 @@
-package submarine
+package submarine.subsystems
 
 class NavigationSystem {
     def x = 0

@@ -1,7 +1,7 @@
-package submarine
+package submarine.subsystems
 
 import spock.lang.Specification
-import submarine.Sonar
+import submarine.subsystems.Sonar
 
 class SonarTest extends Specification {
     def "read"() {

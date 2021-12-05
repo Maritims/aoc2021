@@ -1,7 +1,7 @@
-package submarine
+package submarine.subsystems
 
 import spock.lang.Specification
-import submarine.NavigationSystem
+import submarine.subsystems.NavigationSystem
 
 class NavigationSystemTest extends Specification {
     def "Move around"() {

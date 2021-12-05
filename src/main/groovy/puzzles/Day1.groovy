@@ -1,14 +1,21 @@
 package puzzles
 
 
-import submarine.Sonar
 import submarine.Submarine
+import submarine.subsystems.Sonar
 
-class DayOne implements Puzzle {
+import static helpers.FileHelper.getData
+
+class Day1 implements Puzzle {
     /**
      * Returns a map with all solutions for day one.
      * @return map with all solutions for day one.
      */
+    @Override
+    int getDay() {
+        1
+    }
+
     Map<String, Object> solve() {
         [partOne: solvePartOne(), partTwo: solvePartTwo()]
     }
@@ -18,7 +25,7 @@ class DayOne implements Puzzle {
      * @return number of measurements larger than the previous measurement
      */
     int solvePartOne() {
-        def readings = DayOne.class.classLoader.getResourceAsStream('day1.txt').readLines().collect { Integer.parseInt(it) }
+        def readings = getData(day).collect { Integer.parseInt(it) }
         new Submarine(sonar: new Sonar(readings)).sonar.read()
     }
 
@@ -27,7 +34,7 @@ class DayOne implements Puzzle {
      * @return number of sums larger than the previous sum.
      */
     int solvePartTwo() {
-        def readings = DayOne.class.classLoader.getResourceAsStream('day1.txt').readLines().collect { Integer.parseInt(it) }
+        def readings = getData(day).collect { Integer.parseInt(it) }
         def submarine = new Submarine(sonar: new Sonar(readings))
         submarine.sonar.read(submarine.sonar.readAsWindows())
     }

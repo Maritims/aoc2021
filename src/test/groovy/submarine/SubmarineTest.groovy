@@ -1,8 +1,7 @@
 package submarine
 
 import spock.lang.Specification
-import submarine.NavigationSystem
-import submarine.Submarine
+import submarine.subsystems.NavigationSystem
 
 class SubmarineTest extends Specification {
     def "ExecuteCourse"() {
