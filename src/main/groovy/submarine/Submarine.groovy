@@ -8,6 +8,7 @@ class Submarine {
     Battery battery
     LifeSupport lifeSupport
     HydrothermalSensor hydrothermalSensor
+    FishIncubator fishIncubator
 
     Submarine executeCourse(List<String> instructions) {
         instructions.each {
