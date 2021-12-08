@@ -1,19 +1,20 @@
 package submarine.subsystems
 
+import geometry.Line2D
 import spock.lang.Specification
 
 class HydrothermalSensorTest extends Specification {
     static def vectors = [
-            new submarine.Vector(0,9, 5,9),
-            new submarine.Vector(8,0, 0,8),
-            new submarine.Vector(9,4 ,3,4),
-            new submarine.Vector(2,2, 2,1),
-            new submarine.Vector(7,0, 7,4),
-            new submarine.Vector(6,4, 2,0),
-            new submarine.Vector(0,9, 2,9),
-            new submarine.Vector(3,4, 1,4),
-            new submarine.Vector(0,0, 8,8),
-            new submarine.Vector(5,5, 8,2)]
+            new Line2D(0,9, 5,9),
+            new Line2D(8,0, 0,8),
+            new Line2D(9,4 ,3,4),
+            new Line2D(2,2, 2,1),
+            new Line2D(7,0, 7,4),
+            new Line2D(6,4, 2,0),
+            new Line2D(0,9, 2,9),
+            new Line2D(3,4, 1,4),
+            new Line2D(0,0, 8,8),
+            new Line2D(5,5, 8,2)]
 
     def "Visualize"() {
         given:

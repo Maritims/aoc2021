@@ -1,10 +1,10 @@
-package submarine.subsystems
+package geometry
 
-class Point {
+class Point2D {
     Integer x
     Integer y
 
-    Point(Integer x, Integer y) {
+    Point2D(Integer x, Integer y) {
         this.x = x
         this.y = y
     }
