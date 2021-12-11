@@ -1,26 +1,18 @@
 package submarine.subsystems
 
 class FishIncubator {
-    protected List<Integer> fishes
-
-    FishIncubator(List<Integer> fishes) {
-        this.fishes = fishes
-    }
-
-    List<Integer> incubate(Integer days) {
-        (1..days).each {
-            def iterator = fishes.listIterator()
-
-            def toBeAdded = []
-            while (iterator.hasNext()) {
-                def fish = iterator.next()
-                iterator.set(fish + (fish == 0 ? 6 : -1))
-                if (fish == 0) toBeAdded.add(8)
+    List<Long> incubate(Integer days, List<Long> fishes) {
+        def tomorrow = new ArrayList<Long>([0, 0, 0, 0, 0, 0, 0, 0, 0])
+        for(def day = 0; day < days; day++) {
+            for (def i = 1; i < fishes.size(); i++) {
+                fishes[i - 1] = fishes[i]
             }
 
-            fishes.addAll(toBeAdded)
+            fishes[6] = tomorrow[6]
+            fishes[8] = tomorrow[8]
+            tomorrow[6] = fishes[0] + fishes[7]
+            tomorrow[8] = fishes[0]
         }
-
         fishes
     }
 }

@@ -12,11 +12,21 @@ class Day6 implements Puzzle {
 
     @Override
     Map<String, Object> solve() {
-        [partOne: solvePartOne()]
+        [partOne: solvePartOne(), partTwo: solvePartTwo()]
     }
 
-    Integer solvePartOne() {
-        def data = getData(6)
-        new FishIncubator(data[0].split(',').collect { Integer.parseInt(it) }).incubate(80).size()
+    private static List<Long> getLongs() {
+        def list = [0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L]
+        def map = getData(6)[0].split(',')
+                .collect { Long.parseLong(it) }
+                .countBy { it }
+        map.keySet().each {
+            list[it] += map[it]
+        }
+        list
     }
+
+    def solvePartOne() { new FishIncubator().incubate(80, longs).sum() }
+
+    def solvePartTwo() { new FishIncubator().incubate(256, longs).sum() }
 }
